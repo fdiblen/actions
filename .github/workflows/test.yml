@@ -48,15 +48,15 @@ jobs:
           echo "cmd-1"
           export BUILD_FOLDER="%TEMP%\\matchms\\_build\\"
           echo "cmd-2"
-          echo ${BUILD_FOLDER}
-          echo "cmd-3"
-          echo file:\\${BUILD_FOLDER}\noarch\
-          echo "cmd-4"
-          echo "file:\\${BUILD_FOLDER}\noarch\"
-          echo "cmd-5"
-          echo %BUILD_FOLDER%
-          echo "cmd-6"
-          echo BUILD_FOLDER
+          echo $BUILD_FOLDER
+          # echo "cmd-3"
+          # echo file:\\${BUILD_FOLDER}\noarch\
+          # echo "cmd-4"
+          # echo "file:\\${BUILD_FOLDER}\noarch\"
+          # echo "cmd-5"
+          # echo %BUILD_FOLDER%
+          # echo "cmd-6"
+          # echo BUILD_FOLDER
 
       - name: Show variables for Windows-2
         if: matrix.os == 'windows-latest'
