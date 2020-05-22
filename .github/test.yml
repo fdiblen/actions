@@ -1,0 +1,52 @@
+name: Anaconda Build
+
+on: [push]
+
+jobs:
+
+  verify:
+    name: verify / python-${{ matrix.python-version }} / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        python-version: ['3.7']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+
+      - name: Create hello.txt
+        shell: bash -l {0}
+        run: |
+          mkdir -p /tmp/matchms/_build
+          touch /tmp/matchms/_build/hello.txt
+
+      - name: Upload package artifact from build
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-artifact
+          path: /tmp/matchms/_build
+
+      - name: Download conda package from build job for Windows
+        if: matrix.os == 'windows-latest'
+        uses: actions/download-artifact@v1
+        with:
+          name: test-artifact
+          path: "%TEMP%\\matchms\\_build"
+
+      - name: List artifact folder content for Windows
+        if: matrix.os == 'windows-latest'
+        shell: bash -l {0}
+        run: |
+          export BUILD_FOLDER="%TEMP%\matchms\_build\"
+
+          echo ${BUILD_FOLDER}
+          echo file:\\${BUILD_FOLDER}\noarch\
+          echo "file:\\${BUILD_FOLDER}\noarch\"
+
+          ls -al "%TEMP%\matchms\_build"
+          ls -al ${BUILD_FOLDER}
+
