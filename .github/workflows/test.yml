@@ -53,12 +53,16 @@ jobs:
           echo file:\\${BUILD_FOLDER}\noarch\
           echo "cmd-4"
           echo "file:\\${BUILD_FOLDER}\noarch\"
+          echo "cmd-5"
+          echo %BUILD_FOLDER%
+          echo "cmd-6"
+          echo BUILD_FOLDER
 
       - name: List folders for Windows
         if: matrix.os == 'windows-latest'
         shell: bash -l {0}
         run: |
-          echo "cmd-5"
+          echo "cmd-1"
           ls -al "%TEMP%\matchms\_build"
-          echo "cmd-6"
+          echo "cmd-2"
           ls -al ${BUILD_FOLDER}
