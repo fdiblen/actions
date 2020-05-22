@@ -46,7 +46,7 @@ jobs:
         shell: bash -l {0}
         run: |
           echo "cmd-1"
-          export BUILD_FOLDER="%TEMP%\matchms\_build\"
+          export BUILD_FOLDER="%TEMP%\\matchms\\_build\\"
           echo "cmd-2"
           echo ${BUILD_FOLDER}
           echo "cmd-3"
@@ -72,15 +72,15 @@ jobs:
         run: |
           export BUILD_FOLDER="%TEMP%\\matchms\\_build\\"
           echo "cmd-8"
-          echo file:\\$BUILD_FOLDER\noarch\
+          echo file:\\\$BUILD_FOLDER\noarch\
 
-      - name: List folders for Windows-1
-        if: matrix.os == 'windows-latest'
-        shell: bash -l {0}
-        run: |
-          export BUILD_FOLDER="%TEMP%\\matchms\\_build\\"
-          echo "cmd-1"
-          ls -al "%TEMP%\matchms\_build"
+      # - name: List folders for Windows-1
+      #   if: matrix.os == 'windows-latest'
+      #   shell: bash -l {0}
+      #   run: |
+      #     export BUILD_FOLDER="%TEMP%\\matchms\\_build\\"
+      #     echo "cmd-1"
+      #     ls -al "%TEMP%\matchms\_build"
 
       - name: List folders for Windows-2
         if: matrix.os == 'windows-latest'
