@@ -41,7 +41,7 @@ jobs:
           name: test-artifact
           path: "%TEMP%\\matchms\\_build"
 
-      - name: Show variables for Windows
+      - name: Show variables for Windows-1
         if: matrix.os == 'windows-latest'
         shell: bash -l {0}
         run: |
@@ -57,8 +57,20 @@ jobs:
           echo %BUILD_FOLDER%
           echo "cmd-6"
           echo BUILD_FOLDER
+
+      - name: Show variables for Windows-2
+        if: matrix.os == 'windows-latest'
+        shell: bash -l {0}
+        run: |
+          export BUILD_FOLDER="%TEMP%\matchms\_build\"
           echo "cmd-7"
           echo $BUILD_FOLDER
+
+      - name: Show variables for Windows-3
+        if: matrix.os == 'windows-latest'
+        shell: bash -l {0}
+        run: |
+          export BUILD_FOLDER="%TEMP%\matchms\_build\"
           echo "cmd-8"
           echo file:\\$BUILD_FOLDER\noarch\
 
