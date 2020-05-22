@@ -57,8 +57,10 @@ jobs:
           echo %BUILD_FOLDER%
           echo "cmd-6"
           echo BUILD_FOLDER
-          echo "cmd-6"
+          echo "cmd-7"
           echo $BUILD_FOLDER
+          echo "cmd-8"
+          echo file:\\$BUILD_FOLDER\noarch\
 
       - name: List folders for Windows
         if: matrix.os == 'windows-latest'
