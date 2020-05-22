@@ -41,7 +41,7 @@ jobs:
           name: test-artifact
           path: "%TEMP%\\matchms\\_build"
 
-      - name: List artifact folder content for Windows
+      - name: Show variables for Windows
         if: matrix.os == 'windows-latest'
         shell: bash -l {0}
         run: |
@@ -53,8 +53,12 @@ jobs:
           echo file:\\${BUILD_FOLDER}\noarch\
           echo "cmd-4"
           echo "file:\\${BUILD_FOLDER}\noarch\"
+
+      - name: List folders for Windows
+        if: matrix.os == 'windows-latest'
+        shell: bash -l {0}
+        run: |
           echo "cmd-5"
           ls -al "%TEMP%\matchms\_build"
           echo "cmd-6"
           ls -al ${BUILD_FOLDER}
-
