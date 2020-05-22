@@ -70,9 +70,17 @@ jobs:
         if: matrix.os == 'windows-latest'
         shell: bash -l {0}
         run: |
-          export BUILD_FOLDER="%TEMP%\\matchms\\_build\\"
+          set BUILD_FOLDER=file:\\%TEMP%\\matchms\\_build\\noarch\\
           echo "cmd-8"
-          echo file:\\\$BUILD_FOLDER\noarch\
+          echo %BUILD_FOLDER%
+
+      - name: Show variables for Windows-4
+        if: matrix.os == 'windows-latest'
+        shell: bash -l {0}
+        run: |
+          set BUILD_FOLDER=file:\\%TEMP%\matchms\_build\noarch\
+          echo "cmd-9"
+          echo %BUILD_FOLDER%
 
       # - name: List folders for Windows-1
       #   if: matrix.os == 'windows-latest'
